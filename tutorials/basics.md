@@ -43,3 +43,18 @@ I unziped this to my local /install folder which i have in .gitignore use whatev
 
 ---
 
+Note the Labs folder specifically /labs/eap7-lab/hello-eap7-api
+
+mvn clean package
+
+https://catalog.redhat.com/en/software/container-stacks/detail/5f904c3679b4f8d046342f74
+
+https://catalog.redhat.com/software/containers/jboss-eap-7/eap74-openjdk11-runtime-openshift-rhel8/6054cfd24b028f6e10ce2e32?container-tabs=gti&gti-tabs=registry-tokens
+
+Note the location in the dockerfile that the war is located copy as needed.
+
+Dockerfile.eap7 is located at root
+It will contain the /install which i have unziped 
+- jboss-eap-7.4.0.zip
+- /labs/eap7-lab../target/hello-eap7-api-1.0.war
+
