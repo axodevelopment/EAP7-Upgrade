@@ -68,6 +68,8 @@ mta-cli analyze --list-targets will run behind the scenes
 
 usr/local/bin/docker run --rm --name lmxKujYejyEDXjQT --entrypoint /usr/local/bin/mta-cli --env RUN_MODE=container --env RULE_PATH= registry.redhat.io/mta/mta-cli-rhel9:7.3.1 analyze --run-local=false --list-targets
 
+cd to root of prj
+
 mta-cli analyze \
   --run-local=false \
   --mode source-only \
