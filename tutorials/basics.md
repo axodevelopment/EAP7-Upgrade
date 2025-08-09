@@ -58,3 +58,27 @@ It will contain the /install which i have unziped
 - jboss-eap-7.4.0.zip
 - /labs/eap7-lab../target/hello-eap7-api-1.0.war
 
+---
+
+Downloading the MTA-CLI and installing it....
+
+https://developers.redhat.com/products/mta/download
+
+mta-cli analyze --list-targets will run behind the scenes
+
+usr/local/bin/docker run --rm --name lmxKujYejyEDXjQT --entrypoint /usr/local/bin/mta-cli --env RUN_MODE=container --env RULE_PATH= registry.redhat.io/mta/mta-cli-rhel9:7.3.1 analyze --run-local=false --list-targets
+
+mta-cli analyze \
+  --run-local=false \
+  --mode source-only \
+  --input  "$(pwd)/labs/eap7-lab/hello-eap7-api" \
+  --output "$(pwd)/mta-report" \
+  --target eap8 \
+  --target openjdk21 \
+  --overwrite
+
+--run-local=false is important here unless you have kantra rulesets already installed that you want to use instead you can check this at a /.kantra
+
+This command should complete with a note of 
+
+INFO[0070] Static report created. Access it at this URL:  URL="file:///Users/michaelwilson/tutorials/EAP7-Upgrade/EAP7-Upgrade/mta-report/static-report/index.html"
