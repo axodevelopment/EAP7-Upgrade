@@ -41,6 +41,8 @@ We should have a good handle on the following materials:
 
 MTA should also be used to do a first scan per repo.
 
+### Change Taxonomy
+
 I really like to build and associate playbooks for each category of change that we will be doing:
 
 Example:
@@ -55,4 +57,24 @@ Example:
 - JDK: illegal reflective access, removed/encapsulated JDK APIs, JAXB/CORBA removal
 - 3rd-party libs: upgrade matrix (log4j → log4j2, RestAssured, Jackson, etc.)
 
+Ultimate I want to keep a record of the playbooks both as an audit but also as a sanity check.  Ideally before / after snipets, allowed verions, list of openrewrite recipes etc.
 
+### Project and or Tech Debt Management
+
+We should ask ourselves how will these migrations be classified and organized?  Through Jira?  Through Tech Debt?
+
+We need to map our Taxonomy and MTA results into this format
+
+Mapping MTA severities to Jira(any tool is fine):
+
+- Mandatory → Jira Bug (Priority = High). CI must fail on these in “EAP8/Java21 mode”.
+- Optional → Jira Task (Priority = Medium). Group by category.
+- Informational → Jira Sub-task or backlog comment.
+
+Do we need to Auto-create tickets?
+
+- A small script ingests MTA JSON → creates/updates Jira issues (idempotent).
+- Attach the MTA HTML report to the Epic.
+
+
+### 
