@@ -1,4 +1,4 @@
-# Basics and introduction to - {{Tutorial}}
+# Basics and introduction to - Basics
 
 ## Overview of tutorial
 
