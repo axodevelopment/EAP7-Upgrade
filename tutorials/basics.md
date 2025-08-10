@@ -84,3 +84,19 @@ mta-cli analyze \
 This command should complete with a note of 
 
 INFO[0070] Static report created. Access it at this URL:  URL="file:///Users/michaelwilson/tutorials/EAP7-Upgrade/EAP7-Upgrade/mta-report/static-report/index.html"
+
+--- Openrewrite
+
+have mvn run it
+mvn -U org.openrewrite.
+
+For example can remove unused imports...
+
+```bash
+import javax.ws.rs.ApplicationPath;
+```
+
+Exists in one of the java files in the eap7 project.
+
+maven:rewrite-maven-plugin:run \
+  -Drewrite.activeRecipes=org.openrewrite.java.RemoveUnusedImports
