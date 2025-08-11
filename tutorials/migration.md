@@ -156,3 +156,4 @@ On large scale migrations that contain many waves management will want to know a
 If you have Jira or some equivalent software you will want to ensure your process has the appropriate updates in place.
 
 Also, consider having a job or part of the CI to continually run a MTA task against repos in a standard way.  Doing so will give teams insight into any issues that may come into being earlier in the process and you can be proactive.
+

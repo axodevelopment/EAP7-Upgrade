@@ -16,7 +16,7 @@ ENV EAP_IM_HOME=/opt/eap-im/current
 ENV JBOSS_HOME=/opt/eap
 
 RUN "$EAP_IM_HOME/bin/jboss-eap-installation-manager.sh" \
-      install \
+      provision \
       --dir="$JBOSS_HOME" \
       --feature-packs=org.jboss.eap:wildfly-ee-galleon-pack,org.jboss.eap.cloud:eap-cloud-galleon-pack \
       --layers=jaxrs-server,jpa,elytron,observability \
