@@ -135,3 +135,24 @@ Messaging:
 - (Optional) Reactive Messaging templates (SmallRye + AMQP).
 
 
+### A Definition Of Done
+
+For each catagory there should be a definition of done.
+
+What should be completed per category, what tests should be done to assert / confirm that done.
+
+### A standard process developed
+
+How should each team complete the work?
+
+- Create a PR against a project?
+- Should you create a goldent / standardized branch template?
+- Does everyone follow the same process?
+
+### Visibility and Reporting
+
+On large scale migrations that contain many waves management will want to know and uderstand the velocity and status of the effort.
+
+If you have Jira or some equivalent software you will want to ensure your process has the appropriate updates in place.
+
+Also, consider having a job or part of the CI to continually run a MTA task against repos in a standard way.  Doing so will give teams insight into any issues that may come into being earlier in the process and you can be proactive.
