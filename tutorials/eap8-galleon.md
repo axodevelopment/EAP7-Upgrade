@@ -105,3 +105,33 @@ IM usage
 0.912                              Enable caching and resolving artifacts from the
 0.912                                default local Maven cache.
 ```
+
+Example provisioning.xml
+
+```bash
+<?xml version="1.0" ?>
+<installation xmlns="urn:jboss:galleon:provisioning:4.0">
+  <feature-pack location="org.jboss.eap:wildfly-ee-galleon-pack"/>
+  <feature-pack location="org.jboss.eap.cloud:eap-cloud-galleon-pack"/>
+  <config model="standalone" name="standalone.xml">
+    <layers>
+      <include name="jaxrs-server"/>
+      <include name="jpa"/>
+      <include name="elytron"/>
+      <include name="observability"/>
+      <include name="messaging-activemq"/> <!-- e.g. <include name="transactions"/> -->
+    </layers>
+  </config>
+</installation>
+
+```
+
+Channels location:
+
+```bash
+https://maven.repository.redhat.com/ga/org/jboss/eap/channels/eap-8.0/1.8.0.GA-redhat-00006/
+```
+
+docker build -f rb.dockerfile -t eap8-amq-lab .
+
+docker run -d --name eap8 -p 8080:8080 -p 9990:9990 eap8-amq-lab
