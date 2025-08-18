@@ -15,14 +15,13 @@ RUN mkdir -p /opt/eap-im \
 ENV EAP_IM_HOME=/opt/eap-im/current
 ENV JBOSS_HOME=/opt/eap
 
-RUN "$EAP_IM_HOME/bin/jboss-eap-installation-manager.sh" install \
-      --profile=eap-8.0 \
-      --dir "$JBOSS_HOME" \
-      --accept-license-agreements \
-  && rm -rf "$JBOSS_HOME/standalone/tmp" "$JBOSS_HOME/standalone/log"
+RUN $EAP_IM_HOME/bin/jboss-eap-installation-manager.sh install \
+  --layers=domain,ee-core-profile-server,web-server,cloud-server \
+  --dir $JBOSS_HOME \
+  --accept-license-agreements
 
 RUN echo "Checking for messaging subsystem..." \
  && grep -r "messaging" "$JBOSS_HOME/standalone/configuration/" || echo "No messaging found"
 
 EXPOSE 8080 9990
-CMD ["bash","-lc","$JBOSS_HOME/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0"]
+CMD ["sleep", "infinity"]

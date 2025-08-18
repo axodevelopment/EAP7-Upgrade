@@ -12,17 +12,18 @@ RUN mkdir -p /opt/eap-im \
  && rm -f /tmp/im.zip \
  && ln -s "$(ls -d /opt/eap-im/jboss-eap-installation-manager-*/ | head -n1)" /opt/eap-im/current
 
+COPY install/EAP8-domain/provisioning.xml /tmp/provisioning.xml
+COPY install/EAP8-domain/eap8.yaml /tmp/eap-8.yaml
+
 ENV EAP_IM_HOME=/opt/eap-im/current
 ENV JBOSS_HOME=/opt/eap
 
-RUN "$EAP_IM_HOME/bin/jboss-eap-installation-manager.sh" install \
-      --profile=eap-8.0 \
-      --dir "$JBOSS_HOME" \
-      --accept-license-agreements \
-  && rm -rf "$JBOSS_HOME/standalone/tmp" "$JBOSS_HOME/standalone/log"
-
-RUN echo "Checking for messaging subsystem..." \
- && grep -r "messaging" "$JBOSS_HOME/standalone/configuration/" || echo "No messaging found"
+RUN ${EAP_IM_HOME}/bin/jboss-eap-installation-manager.sh install \
+      --definition=/tmp/provisioning.xml \
+      --manifest=org.jboss.eap.channels:eap-8.0:manifest:yaml \
+      --repositories=https://maven.repository.redhat.com/ga \
+      --dir ${JBOSS_HOME} \
+      --accept-license-agreements
 
 EXPOSE 8080 9990
-CMD ["bash","-lc","$JBOSS_HOME/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0"]
+CMD ["sleep", "infinity"]
