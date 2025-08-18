@@ -101,6 +101,6 @@ Exists in one of the java files in the eap7 project.
 maven:rewrite-maven-plugin:run \
   -Drewrite.activeRecipes=org.openrewrite.java.RemoveUnusedImports
 
-  mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
+mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
   -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-migrate-java:LATEST \
   -Drewrite.activeRecipes=org.openrewrite.java.migrate.jakarta.JavaxMigrationToJakarta
